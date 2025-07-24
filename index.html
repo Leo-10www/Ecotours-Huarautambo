@@ -4,54 +4,70 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoTours Huarautambo</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Leaflet CSS y JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body class="bg-green-50 font-sans">
+  <!-- Encabezado -->
   <header class="bg-green-600 text-white p-4 text-center shadow-md">
     <h1 class="text-3xl font-bold">EcoTours Huarautambo</h1>
-    <p class="text-sm">Turismo responsable en la provincia Daniel Alcides Carrión - Región Pasco</p>
+    <p class="text-sm">Turismo responsable en la provincia Daniel Alcides Carrión - Pasco</p>
   </header>
+
+  <!-- Menú -->
   <nav class="bg-green-100 p-2 flex justify-center space-x-6 text-green-700 font-medium">
     <a href="#rutas" class="hover:underline">Rutas Turísticas</a>
     <a href="#consejos" class="hover:underline">Consejos Ecológicos</a>
     <a href="#negocios" class="hover:underline">Negocios Verdes</a>
     <a href="#eventos" class="hover:underline">Eventos</a>
   </nav>
+
+  <!-- Sección de rutas -->
   <section id="rutas" class="p-6">
     <h2 class="text-2xl font-semibold text-green-800 mb-4">🌄 Rutas Turísticas de Huarautambo</h2>
     <div class="grid md:grid-cols-2 gap-6">
+      <!-- Ruta 1 -->
       <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-        <img src="https://via.placeholder.com/600x300?text=Complejo+Arqueologico+Huarautambo" class="w-full h-64 object-cover">
+        <img src="https://rumbosdelperu.com/wp-content/uploads/2021/05/huarautambo.jpg" alt="Complejo Arqueológico Huarautambo" class="w-full h-64 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-bold">Complejo Arqueológico de Huarautambo</h3>
-          <p class="text-sm text-gray-700 mt-2">Centro incaico vinculado al Qhapaq Ñan, con muros y andenes. Usado por el Inca como lugar de descanso.</p>
-          <a href="https://goo.gl/maps/LNkSNE34bAso1frq6" target="_blank" class="text-blue-600 underline mt-2 inline-block">📍 Ver en el mapa</a>
+          <p class="text-sm text-gray-700 mt-2">Centro incaico del Qhapaq Ñan con muros y andenes usados por el Inca como lugar de descanso.</p>
         </div>
       </div>
+      <!-- Ruta 2 -->
       <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-        <img src="https://via.placeholder.com/600x300?text=Puente+Inca+de+Piedra" class="w-full h-64 object-cover">
+        <img src="https://cdn.aquienpasco.com/puente-inca.jpg" alt="Puente Inca de Piedra" class="w-full h-64 object-cover">
         <div class="p-4">
-          <h3 class="text-xl font-bold">Puente de Piedra Inca</h3>
+          <h3 class="text-xl font-bold">Puente Inca de Piedra</h3>
           <p class="text-sm text-gray-700 mt-2">Estructura de piedra construida por los incas para cruzar quebradas, parte del sistema vial antiguo.</p>
-          <a href="https://goo.gl/maps/LNkSNE34bAso1frq6" target="_blank" class="text-blue-600 underline mt-2 inline-block">📍 Ver en el mapa</a>
         </div>
       </div>
+      <!-- Ruta 3 -->
       <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-        <img src="https://via.placeholder.com/600x300?text=Mirador+de+Huarautambo" class="w-full h-64 object-cover">
+        <img src="https://cdn.rumbosdelperu.com/mirador-huarautambo.jpg" alt="Mirador de Huarautambo" class="w-full h-64 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-bold">Mirador de Huarautambo</h3>
-          <p class="text-sm text-gray-700 mt-2">Punto elevado con vista del valle y paisajes andinos. Ideal para caminatas al amanecer y fotografía.</p>
+          <p class="text-sm text-gray-700 mt-2">Punto elevado con vista panorámica del valle, ideal para caminatas al amanecer y fotografía.</p>
         </div>
       </div>
+      <!-- Ruta 4 -->
       <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-        <img src="https://via.placeholder.com/600x300?text=Manantial+de+Aguas+Cristalinas" class="w-full h-64 object-cover">
+        <img src="https://cdn.rumbosdelperu.com/manantial-huarautambo.jpg" alt="Manantial de Aguas Cristalinas" class="w-full h-64 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-bold">Manantial de Aguas Cristalinas</h3>
-          <p class="text-sm text-gray-700 mt-2">Fuente natural de agua pura, usada por generaciones. Rodeada de vegetación, ideal para el descanso.</p>
+          <p class="text-sm text-gray-700 mt-2">Fuente natural de agua pura rodeada de vegetación, usada por generaciones para el descanso.</p>
         </div>
       </div>
     </div>
+
+    <!-- Mapa interactivo -->
+    <div id="map" class="w-full h-96 mt-6 rounded-xl shadow-lg"></div>
   </section>
+
+  <!-- Consejos ecológicos -->
   <section id="consejos" class="p-6 bg-green-100">
     <h2 class="text-2xl font-semibold text-green-800 mb-4">🌱 Consejos Ecológicos</h2>
     <ul class="list-disc list-inside text-gray-800 space-y-2">
@@ -61,16 +77,58 @@
       <li>Respeta el silencio de la naturaleza.</li>
     </ul>
   </section>
+
+  <!-- Negocios verdes -->
   <section id="negocios" class="p-6">
     <h2 class="text-2xl font-semibold text-green-800 mb-4">🛍️ Negocios Verdes</h2>
-    <p class="text-gray-700">Muy pronto verás aquí negocios, hospedajes y artesanías locales sostenibles.</p>
+    <p class="text-gray-700 mb-4">Cuadros hechos con materiales reciclados por artesanos locales:</p>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <img src="https://i.etsystatic.com/12345678/r/il/abcd1234/il_fullxfull.1234567890.jpg" alt="Cuadro reciclado 1" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-bold">Cuadro Reciclado 1</h3>
+          <p class="text-sm text-gray-700 mt-1">Arte con materiales reutilizados, diseño rústico y ecológico.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+        <img src="https://i.etsystatic.com/12345678/r/il/efgh5678/il_fullxfull.0987654321.jpg" alt="Cuadro reciclado 2" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-bold">Cuadro Reciclado 2</h3>
+          <p class="text-sm text-gray-700 mt-1">Marco decorativo hecho a mano con materiales reciclados.</p>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <!-- Eventos -->
   <section id="eventos" class="p-6 bg-green-100">
     <h2 class="text-2xl font-semibold text-green-800 mb-4">📅 Eventos Verdes</h2>
     <p class="text-gray-700">Campañas de limpieza, caminatas y ferias ecológicas. ¡Próximamente!</p>
   </section>
+
+  <!-- Pie de página -->
   <footer class="bg-green-600 text-white text-center p-4 mt-6">
     <p>&copy; 2025 EcoTours Huarautambo. Turismo con conciencia.</p>
   </footer>
+
+  <!-- Script para el mapa -->
+  <script>
+    const map = L.map('map').setView([-10.3405, -76.5002], 14);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    const lugares = [
+      { nombre: "Complejo Arqueológico de Huarautambo", coords: [-10.339, -76.499] },
+      { nombre: "Puente de Piedra Inca", coords: [-10.341, -76.497] },
+      { nombre: "Mirador de Huarautambo", coords: [-10.342, -76.503] },
+      { nombre: "Manantial de Aguas Cristalinas", coords: [-10.343, -76.501] }
+    ];
+
+    lugares.forEach(lugar => {
+      L.marker(lugar.coords).addTo(map).bindPopup(`<b>${lugar.nombre}</b>`);
+    });
+  </script>
 </body>
 </html>
